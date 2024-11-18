@@ -7,7 +7,7 @@ interface FetchOptions {
 
 export async function useFetch(url: string, options?: FetchOptions) {
   //https://quickmpback.onrender.com/api/
-  const apiUrl = 'http://localhost:4000/api/';
+  const apiUrl = 'https://quickmpback.onrender.com/api/';
   const fullUrl = apiUrl + url;
 
   const {
