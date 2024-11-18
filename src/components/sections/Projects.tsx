@@ -1,15 +1,17 @@
-import Section from "../Section";
-import { Project } from "../../interfaces/Project";
-import GitHub from "../../icons/GitHub";
+import Section from '../Section';
+import { Project } from '../../interfaces/Project';
+import GitHub from '../../icons/GitHub';
 
 export default function Projects({
-  projects,
+  projects
 }: Readonly<{ projects: Project[] }>) {
+  if (projects.length === 0 || null) return null;
+
   return (
     <Section title="Proyectos">
       <ul
         style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))'
         }}
         className="grid gap-4 -mx-4"
       >
@@ -44,7 +46,7 @@ export default function Projects({
                   <p className="text-sm leading-tight mb-2">{description}</p>
                 </header>
                 <footer className="flex flex-wrap gap-2 text-xs">
-                  {highlights.map((highlight, index) => (
+                  {highlights?.map((highlight, index) => (
                     <span
                       key={index}
                       className="bg-gray-200 text-gray-600 font-medium rounded-full px-2 py-1"

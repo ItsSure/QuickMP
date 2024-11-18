@@ -3,11 +3,14 @@ import { EducationInterface } from "../../interfaces/Education";
 
 export default function Education({
   education,
-}: Readonly<{ education: Readonly<EducationInterface[]> }>) {
+}: Readonly<{ education: EducationInterface[] | undefined }>) {
+
+  if (!education) return null;
+
   return (
     <Section title="Educación">
       <ul className="flex flex-col gap-8">
-        {education.map(({ institution, startDate, endDate, area }, index) => {
+        {education?.map(({ institution, startDate, endDate, area }, index) => {
           const startYear = new Date(startDate).getFullYear();
           const endYear =
             endDate !== null ? new Date(endDate).getFullYear() : "Actual";

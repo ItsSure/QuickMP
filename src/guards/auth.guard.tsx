@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext';
 
 interface Props {
   isAuthenticated: boolean;
@@ -8,7 +10,8 @@ interface Props {
 const PrivateValidationFragment = <Outlet />;
 const PublicValidationFragment = <Navigate replace to={'/signin'} />;
 
-export const AuthGuard = ({ isAuthenticated, user }: Props) => {
+export const AuthGuard = () => {
+  const { logoutf, isAuthenticated, user } = useContext(AuthContext);
   console.log('entro', isAuthenticated, user);
   return user ? (
     isAuthenticated ? (

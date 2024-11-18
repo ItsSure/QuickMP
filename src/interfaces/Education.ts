@@ -5,6 +5,4 @@ export interface EducationInterface {
   studyType: string;
   startDate: string;
   endDate: string;
-  score: string;
-  courses: string[];
 }

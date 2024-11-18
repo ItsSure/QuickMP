@@ -1,4 +1,4 @@
-import { Button, Card, Flex, Form, Input } from 'antd';
+import { Button, Card, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
@@ -7,10 +7,12 @@ import { useNavigate, Link } from 'react-router-dom';
 export const Signin = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     console.log('Received values of form: ', values);
-    login();
-    navigate('/form');
+    const response = await login(values.email, values.password);
+    if (response) {
+      navigate('/form');
+    }
   };
 
   return (
@@ -22,10 +24,10 @@ export const Signin = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          name="username"
-          rules={[{ required: true, message: 'Please input your Username!' }]}
+          name="email"
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
-          <Input prefix={<UserOutlined />} placeholder="Username" />
+          <Input prefix={<UserOutlined />} placeholder="Email" />
         </Form.Item>
         <Form.Item
           name="password"
@@ -37,11 +39,11 @@ export const Signin = () => {
             placeholder="Password"
           />
         </Form.Item>
-        <Form.Item className="mb-0">
+        {/* <Form.Item className="mb-0">
           <Flex justify="space-between" align="center">
             <a href="">Forgot password</a>
           </Flex>
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item className="mb-0">
           <Button block type="primary" htmlType="submit">

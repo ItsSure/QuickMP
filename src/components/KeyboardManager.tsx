@@ -15,7 +15,7 @@ const SOCIAL_ICONS: SocialIcon = {
 
 export default function KeyboardManager({
   profiles,
-}: Readonly<{ profiles: Profile[] }>) {
+}: Readonly<{ profiles: Profile[] | undefined }>) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProfiles, setFilteredProfiles] = useState(profiles);
@@ -62,17 +62,19 @@ export default function KeyboardManager({
   }, []);
 
   useEffect(() => {
-    const filtered = profiles.filter(({ network }) =>
+    const filtered = profiles?.filter(({ network }) =>
       network.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredProfiles(filtered);
   }, [searchTerm, profiles]);
 
+  if (!profiles) return null;
+
   return (
     <>
       <footer className="max-[768px]:hidden fixed bottom-0 left-0 w-full bg-gray-100 border-t border-gray-300 py-2 px-4 text-center text-sm no-print">
         <div className="md:flex items-center justify-center">
-          Pulsa <kbd className="bg-gray-200 rounded px-1 text-xs">Ctrl</kbd> +{" "}
+          Pulsa <kbd className="bg-gray-200 rounded px-1 text-xs">Ctrl</kbd> +{' '}
           <kbd className="bg-gray-200 rounded px-1 text-xs">K</kbd> para abrir
           la paleta de comandos.
         </div>
@@ -122,29 +124,29 @@ export default function KeyboardManager({
 
         <h3 className="font-semibold">Social</h3>
         <ul>
-          {filteredProfiles.map(({ network, url }) => {
+          {filteredProfiles?.map(({ network, url }) => {
             const firstLetter = network[0].toUpperCase();
             const IconComponent = SOCIAL_ICONS[network];
             return (
               <li key={network} className="py-1">
                 <Button
                   type="link"
-                  onClick={() => window.open(url, "_blank")}
+                  onClick={() => window.open(url, '_blank')}
                   className="text-gray-500 hover:underline"
                 >
                   {IconComponent && <IconComponent />}
-                  {network}{" "}
+                  {network}{' '}
                   <span className="text-gray-400">
                     ({`ctrl+${firstLetter}`})
                   </span>
                 </Button>
               </li>
             );
-          })}
+          }) || null}
         </ul>
 
         <footer className="mt-4 text-sm text-gray-500 text-center">
-          Presiona <kbd className="bg-gray-200 rounded px-1 text-xs">Esc</kbd>{" "}
+          Presiona <kbd className="bg-gray-200 rounded px-1 text-xs">Esc</kbd>{' '}
           para cerrar.
         </footer>
       </Modal>

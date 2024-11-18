@@ -8,16 +8,33 @@ import {
   MenuProps
 } from 'antd';
 import { Header, Content } from 'antd/es/layout/layout';
-import { useContext, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 import { AuthContext } from '../auth/AuthContext';
 
 const MainLayout = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { isAuthenticated, logoutf } = useContext(AuthContext);
+  const { isAuthenticated, logoutf, user } = useContext(AuthContext);
+  const [userName, setUserName] = useState('User');
+  const navigate = useNavigate();
 
-  const userInitials = 'JP';
+  useEffect(() => {
+    console.log(user);
+    if (user != undefined) {
+      const userJson = JSON.parse(user);
+      setUserName(
+        userJson
+          ? userJson.name
+              .split(' ')
+              .map((n: string) => n[0])
+              .slice(0, 2)
+              .join('')
+              .toUpperCase()
+          : 'User'
+      );
+    }
+  }, [user]);
 
   const showDrawer = () => {
     setIsDrawerOpen(true);
@@ -27,14 +44,20 @@ const MainLayout = () => {
     setIsDrawerOpen(false);
   };
 
-  const signOut = () => {
-    logoutf();
+  const signOut = async () => {
+    const userJson = await JSON.parse(user);
+    logoutf(userJson.userId);
     console.log('Sign Out');
+    navigate('/');
   };
 
   const items: MenuProps['items'] = [
     {
       key: '1',
+      label: <Link to="/form">Editar mi Portafolio</Link>
+    },
+    {
+      key: '2',
       label: <div onClick={signOut}>Log Out</div>
     }
   ];
@@ -42,11 +65,12 @@ const MainLayout = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Layout>
-        <Header>
+        <Header className="bg-black">
           <div className="flex justify-between items-center min-h-full text-white">
             {/* Logo */}
-            <div className="text-xl">Quick Minimalist Portfoly</div>
-
+            <Link className="text-xl" to="/">
+              Quick Minimalist Portfoly
+            </Link>
             {/* Hamburger Icon for Mobile */}
             <Button
               type="text"
@@ -58,9 +82,13 @@ const MainLayout = () => {
             {/* Desktop Buttons / Avatar */}
             <div className="hidden md:flex space-x-4">
               {isAuthenticated ? (
-                <Dropdown menu={{ items }} trigger={['click']}>
+                <Dropdown
+                  className="cursor-pointer"
+                  menu={{ items }}
+                  trigger={['click']}
+                >
                   <Avatar style={{ backgroundColor: '#87d068' }} size="large">
-                    {userInitials}
+                    {userName}
                   </Avatar>
                 </Dropdown>
               ) : (
@@ -86,7 +114,7 @@ const MainLayout = () => {
                   style={{ backgroundColor: '#87d068', marginBottom: '16px' }}
                   size="large"
                 >
-                  {userInitials}
+                  {userName}
                 </Avatar> */}
                 <Button danger block onClick={signOut}>
                   Log Out
@@ -101,7 +129,7 @@ const MainLayout = () => {
             )}
           </Drawer>
         </Header>
-        <Content className="flex justify-center m-2">
+        <Content className="flex bg-white justify-center">
           <Outlet />
         </Content>
       </Layout>

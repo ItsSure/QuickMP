@@ -1,51 +1,38 @@
 import { Button, Card, Checkbox, Form, Input } from 'antd';
-
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0
-    },
-    sm: {
-      span: 16,
-      offset: 8
-    }
-  }
-};
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 }
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 }
-  }
-};
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext';
+import { useContext } from 'react';
 
 export const SignUp = () => {
   const [form] = Form.useForm();
-  const onFinish = (values: any) => {
+  const navigate = useNavigate();
+  const { signUpF } = useContext(AuthContext);
+
+  const onFinish = async (values: any) => {
     console.log('Received values of form: ', values);
+    if (values.agreement) {
+      const response = await signUpF(
+        values.email,
+        values.name,
+        values.password
+      );
+      if (response) {
+        form.resetFields();
+        navigate('/signin');
+      }
+    }
   };
   return (
-    <Card className="h-fit mt-10 min-w-[450px]">
+    <Card className="h-fit mt-10">
       <Form
-        {...formItemLayout}
         form={form}
         name="register"
+        initialValues={{ remember: true }}
         onFinish={onFinish}
-        initialValues={{
-          residence: ['zhejiang', 'hangzhou', 'xihu'],
-          prefix: '86'
-        }}
-        style={{ maxWidth: 600 }}
-        scrollToFirstError
+        style={{ maxWidth: 360 }}
       >
         <Form.Item
           name="email"
-          label="E-mail"
           rules={[
             {
               type: 'email',
@@ -57,12 +44,27 @@ export const SignUp = () => {
             }
           ]}
         >
-          <Input />
+          <Input placeholder="E-mail" />
+        </Form.Item>
+
+        <Form.Item
+          name="name"
+          rules={[
+            {
+              type: 'string',
+              message: 'The input is not valid full name!'
+            },
+            {
+              required: true,
+              message: 'Please enter your full name!'
+            }
+          ]}
+        >
+          <Input placeholder="Full Name" />
         </Form.Item>
 
         <Form.Item
           name="password"
-          label="Password"
           rules={[
             {
               required: true,
@@ -71,12 +73,11 @@ export const SignUp = () => {
           ]}
           hasFeedback
         >
-          <Input.Password />
+          <Input.Password placeholder="Password" />
         </Form.Item>
 
         <Form.Item
           name="confirm"
-          label="Confirm Password"
           dependencies={['password']}
           hasFeedback
           rules={[
@@ -96,7 +97,7 @@ export const SignUp = () => {
             })
           ]}
         >
-          <Input.Password />
+          <Input.Password placeholder="Confirm Password" />
         </Form.Item>
 
         <Form.Item
@@ -111,13 +112,13 @@ export const SignUp = () => {
                   : Promise.reject(new Error('Should accept agreement'))
             }
           ]}
-          {...tailFormItemLayout}
         >
           <Checkbox>
-            I have read the <a href="">agreement</a>
+            I have read the{' '}
+            <span className="cursor-pointer text-blue-600"> agreement</span>
           </Checkbox>
         </Form.Item>
-        <Form.Item className="mb-0" {...tailFormItemLayout}>
+        <Form.Item className="mb-0">
           <Button type="primary" htmlType="submit">
             Register
           </Button>

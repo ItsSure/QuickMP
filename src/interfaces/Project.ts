@@ -1,8 +1,8 @@
 export interface Project {
   name: string;
-  isActive: boolean;
+  isActive?: boolean;
   description: string;
-  highlights: string[];
+  highlights?: string[];
   url?: string | null;
   github?: string | null;
 }

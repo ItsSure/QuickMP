@@ -16,7 +16,7 @@ export default function Hero({ basics }: Readonly<{ basics: Basics }>) {
   };
   const { name, label, image, location, profiles, phone, email } = basics;
   const { city, region } = location;
-  const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
+  const linkedInfo = profiles?.find(({ network }) => network === "LinkedIn");
   const linkedUrl = linkedInfo?.url;
   const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 

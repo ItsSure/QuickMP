@@ -3,7 +3,10 @@ import Section from "../Section";
 
 export default function Experience({
   work,
-}: Readonly<{ work: Work[] }>) {
+}: Readonly<{ work: Work[] | undefined | null }>) {
+
+  if (!work) return null;
+
   return (
     <Section title="Experiencia laboral">
       <ul className="flex flex-col gap-8">

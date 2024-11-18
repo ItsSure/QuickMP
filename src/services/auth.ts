@@ -1,69 +1,37 @@
-const url = 'http://localhost:3333/'
+import { useFetch } from '../Utils/useFetch';
 
-export const authService = async (data) => {
-  const options = {
+export const refresh = async () => {
+  const response = await useFetch(`auth/refresh`);
+  return response;
+};
+
+export const signIn = async (email: string, password: string) => {
+  const response = await useFetch(`auth/signin`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-    credentials: 'include',
-  }
-
-  try {
-    const response = await fetch(`${url}users/signin`, options)
-    if (!response.ok) {
-      throw new Error('Error en la solicitud')
+    body: {
+      email,
+      password
     }
-    const responseData = await response.json()
-    return responseData
-  } catch (error) {
-    console.error('Error:', error)
-    throw error
-  }
-}
+  });
+  return response;
+};
 
-export const registerService = async (data) => {
-  const options = {
+export const signUp = async (email: string, name: string, password: string) => {
+  const response = await useFetch(`auth/signup`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-    credentials: 'include',
-  }
-
-  try {
-    const response = await fetch(`${url}registro`, options)
-    if (!response.ok) {
-      throw new Error('Error en la solicitud')
+    body: {
+      email,
+      name,
+      password
     }
-    const responseData = await response.json()
-    return responseData
-  } catch (error) {
-    console.error('Error:', error)
-    throw error
-  }
-}
+  });
+  return response;
+};
 
-export const logout = async () => {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
-  }
-
-  try {
-    const response = await fetch(`${url}users/logout`, options)
-    if (!response.ok) {
-      throw new Error('Error en la solicitud')
-    }
-    const responseData = await response.json()
-    return responseData
-  } catch (error) {
-    console.error('Error:', error)
-    throw error
-  }
-}
+export const logout = async (userId: number) => {
+  const userToINT = Number(userId);
+  const response = await useFetch(`auth/logout/${userToINT}`, {
+    method: 'POST'
+  });
+  return response;
+};
