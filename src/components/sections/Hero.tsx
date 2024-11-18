@@ -56,7 +56,7 @@ export default function Hero({ basics }: Readonly<{ basics: Basics }>) {
                 <Phone />
               </a>
             )}
-            {profiles.map(({ network, url }) => {
+            {profiles?.map(({ network, url }) => {
               const Icon = SOCIAL_ICONS[network];
               return (
                 <a

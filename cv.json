@@ -1,0 +1,156 @@
+{
+  "basics": {
+    "name": "Jhonatan Petro Requerido",
+    "label": "Full Stack Developer Requerido",
+    "image": "frame.jpg",
+    "email": "jpetroruiz@gmail.com",
+    "phone": "+57 3004105733",
+    "summary": "Require Hola, soy un apasionado desarrollador de software enfocado en el FrontEnd. Actualmente trabajo con React y me encanta aprender nuevas tecnologías para perfeccionar mis habilidades. También estoy abierto a explorar todo lo relacionado con js y aprender nuevas cosas en ese ámbito. Me encanta trabajar en equipo y crear un ambiente cómodo y amigable para todos. Siempre busco nuevos retos y oportunidades para aprender, cada proyecto me enseña algo nuevo y me hace crecer profesionalmente. Estoy siempre buscando formas de mejorar y aprender, tanto en mi vida personal como profesional.",
+    "location": {
+      "city": "Planeta Rica - Cordoba Requerido",
+      "region": "Colombia Requerido"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "Jhonatan Petro",
+        "url": "https://linkedin.com/in/jhonatan-petro"
+      },
+      {
+        "network": "GitHub",
+        "username": "Jhonatan Petro",
+        "url": "https://github.com/ItsSure"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Axcel Soft",
+      "position": "FrontEnd Developer",
+      "url": "https://axcelsoftware.com/",
+      "startDate": "2023-02-27",
+      "endDate": "2023-09-29",
+      "summary": "Labore como desarrollador en multiples proyectos con 2 clientes."
+    },
+    {
+      "name": "SoftCaribbean",
+      "position": "Full Stack Developer",
+      "url": "https://www.softcaribbean.com/",
+      "startDate": "2021-10-15",
+      "endDate": "2022-10-15",
+      "summary": "Trabaje como analista desarrollador en distintos proyectos con distintos clientes."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad de Cordoba",
+      "url": "https://www.unicordoba.edu.co/",
+      "area": "Ingeniero de Sistemas",
+      "studyType": "Pregrado",
+      "startDate": "2016-01-20",
+      "endDate": "2021-08-17"
+    },
+    {
+      "institution": "Universidad de Cordoba",
+      "url": "https://www.unicordoba.edu.co/",
+      "area": "ETHICAL HACKING Y SEGURIDAD INFORMATICA",
+      "studyType": "Diplomado",
+      "startDate": "2021-01-02",
+      "endDate": "2021-06-1"
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML"
+    },
+    {
+      "name": "CSS"
+    },
+    {
+      "name": "JavaScript"
+    },
+    {
+      "name": "Tailwind"
+    },
+    {
+      "name": "TypeScript"
+    },
+    {
+      "name": "Node"
+    },
+    {
+      "name": "MySQL"
+    },
+    {
+      "name": "Git"
+    },
+    {
+      "name": "GitHub"
+    },
+    {
+      "name": "Next.js"
+    },
+    {
+      "name": "React"
+    },
+    {
+      "name": "React Native"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Tipi Prinza - Inmobiliaria - Arpi",
+      "isActive": true,
+      "description": "Inmobiliaria.",
+      "highlights": [
+        "Full Stack Developer",
+        "Angular 12",
+        "Spring Boot",
+        "MySQL",
+        "JasperReport"
+      ],
+      "url": null,
+      "github": null
+    },
+    {
+      "name": "TCC",
+      "isActive": true,
+      "description": "Software interno para la gestión de transporte de paquetes de la empresa",
+      "highlights": ["Angular 1, 8, 12", "Java - Spring Boot", "Oracle PL SQL"],
+      "url": null,
+      "github": null
+    },
+    {
+      "name": "Ito Software - ATEC, OBS",
+      "isActive": true,
+      "description": "Observador software interno, Asistencia técnica software para brindar asistencia a colegios de la ciudad de Bogotá",
+      "highlights": ["Angular 13"],
+      "url": null,
+      "github": null
+    },
+    {
+      "name": "Savia EPS",
+      "isActive": true,
+      "description": "Gestión, registro, seguimiento de pacientes con enfermedades de alto costo",
+      "highlights": ["TypeScript", "React", "MySQL"],
+      "url": null,
+      "github": null
+    },
+    {
+      "name": "IMPEL - SIES",
+      "isActive": true,
+      "description": "Agendamiento, gestión de citas, seguimiento de pacientes y profesionales",
+      "highlights": ["React"],
+      "url": null,
+      "github": null
+    },
+    {
+      "name": "IMPEL - JEP, TuAgenda, CRC, SYSO, Credi Expertos",
+      "isActive": true,
+      "description": "Multiples proyectos basados en agendamiento y/o registro de citas",
+      "highlights": ["Angular"],
+      "url": null,
+      "github": null
+    }
+  ]
+}

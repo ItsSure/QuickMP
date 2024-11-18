@@ -22,7 +22,7 @@ export default function Projects({
                 <header className="flex-1">
                   <h3 className="mb-1 text-lg">
                     <a
-                      href={url}
+                      href={url??undefined}
                       target="_blank"
                       rel="noopener noreferrer"
                       title={`Ver el proyecto ${name}`}
@@ -39,7 +39,7 @@ export default function Projects({
                         rel="noopener noreferrer"
                         title={`Ver código fuente del proyecto ${name}`}
                       >
-                        <GitHub className="inline-block" />
+                        <GitHub />
                       </a>
                     )}
                   </h3>

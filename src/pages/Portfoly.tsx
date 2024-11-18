@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import KeyboardManager from '../components/KeyboardManager';
 import About from '../components/sections/About';
 import Education from '../components/sections/Education';
@@ -7,13 +7,12 @@ import Hero from '../components/sections/Hero';
 import Projects from '../components/sections/Projects';
 import Skills from '../components/sections/Skills';
 import Cv from '../../cv.json';
-import { AuthContext } from '../auth/AuthContext';
 import { ICv } from '../interfaces/Cv';
 
 export const Portfoly = () => {
-  const [cv, setCV] = useState<ICv>(Cv);
+  const [cv] = useState<ICv>(Cv);
 
-  const { isAuthenticated, rol, logoutf } = useContext(AuthContext);
+  //const { isAuthenticated, rol, logoutf } = useContext(AuthContext);
   // if (!isAuthenticated) {
   //   return <Navigate to="/login" />;
   // }
