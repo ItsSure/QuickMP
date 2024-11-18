@@ -24,7 +24,7 @@ const Routes = () => {
             <Route />
           </Route>
         </Route>
-        <Route path="/Portfoly" element={<Portfoly />}></Route>
+        <Route path="/portfoly" element={<Portfoly />}></Route>
       </RouterRoutes>
     </Router>
   );
