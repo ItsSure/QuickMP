@@ -34,6 +34,8 @@ export const FormPortfoly = () => {
       userJson.userId,
       values
     );
+    console.log(data, error);
+    
     messageApi.destroy();
     if (data) {
       messageApi.open({
