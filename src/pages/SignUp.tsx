@@ -1,5 +1,5 @@
 import { Button, Card, Checkbox, Form, Input } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthContext';
 import { useContext } from 'react';
 
@@ -114,14 +114,15 @@ export const SignUp = () => {
           ]}
         >
           <Checkbox>
-            I have read the{' '}
-            <span className="cursor-pointer text-blue-600"> agreement</span>
+            He leído el{' '}
+            <span className="cursor-pointer text-blue-600"> acuerdo</span>
           </Checkbox>
         </Form.Item>
         <Form.Item className="mb-0">
-          <Button type="primary" htmlType="submit">
-            Register
+          <Button block type="primary" htmlType="submit">
+            Registrar
           </Button>
+          <Link to="/signin">Ya tienes una cuenta?</Link>
         </Form.Item>
       </Form>
     </Card>

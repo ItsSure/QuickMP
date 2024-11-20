@@ -1,24 +1,25 @@
-import { Basics } from "../../interfaces/Basics";
-import { SocialIcon } from "../../interfaces/SocialIcon";
-import WorldMap from "../../icons/WorldMap";
-import Mail from "../../icons/Mail";
-import Phone from "../../icons/Phone";
-import GitHub from "../../icons/GitHub";
-import LinkedIn from "../../icons/LinkedIn";
-import X from "../../icons/X";
-import Section from "../Section";
+import { Basics } from '../../interfaces/Basics';
+import { SocialIcon } from '../../interfaces/SocialIcon';
+import WorldMap from '../../icons/WorldMap';
+import Mail from '../../icons/Mail';
+import Phone from '../../icons/Phone';
+import GitHub from '../../icons/GitHub';
+import LinkedIn from '../../icons/LinkedIn';
+import X from '../../icons/X';
+import Section from '../Section';
+import { Image } from 'antd';
 
 export default function Hero({ basics }: Readonly<{ basics: Basics }>) {
   const SOCIAL_ICONS: SocialIcon = {
     GitHub,
     LinkedIn,
-    X,
+    X
   };
   const { name, label, image, location, profiles, phone, email } = basics;
   const { city, region } = location;
-  const linkedInfo = profiles?.find(({ network }) => network === "LinkedIn");
+  const linkedInfo = profiles?.find(({ network }) => network === 'LinkedIn');
   const linkedUrl = linkedInfo?.url;
-  const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
+  const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
 
   return (
     <Section>
@@ -74,10 +75,11 @@ export default function Hero({ basics }: Readonly<{ basics: Basics }>) {
           </footer>
         </div>
         <figure className="flex justify-center items-center">
-          <img
-            src={`/${image}`}
+          <Image
+            src={`${image}`}
             alt={name}
             className="aspect-square object-cover w-32 rounded-lg"
+            fallback="/avatar.jpg"
           />
         </figure>
       </div>

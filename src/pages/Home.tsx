@@ -15,7 +15,7 @@ export const Home = () => {
     {
       icon: <BgColorsOutlined className="text-2xl" />,
       title: 'Minimalist',
-      description: 'Diseno minimalista y funcional.'
+      description: 'Diseño minimalista y funcional.'
     },
     {
       icon: <ThunderboltOutlined className="text-2xl" />,
@@ -45,15 +45,24 @@ export const Home = () => {
   ];
   return (
     <div className="min-h-screen bg-white text-foreground w-full">
-      {/* Product Name Section */}
       <section className="py-20 text-center">
-        <h1 className="text-4xl font-bold mb-4">Quick Minimalist Portfoly</h1>
+        <div className="flex flex-direction-row justify-center ">
+          <Image
+            preview={false}
+            src="/Logp.svg"
+            alt="Logo quickMP"
+            width={40}
+            height={40}
+          />
+          <h1 className="ml-2 text-4xl font-bold mb-4">
+            Quick Minimalist Portfoly
+          </h1>
+        </div>
         <p className="text-xl text-muted-foreground">
           Muestra tu trabajo con elegancia y sencillez.
         </p>
       </section>
 
-      {/* Preview Card Section */}
       <section className="py-20 px-4">
         <div className="max-w-5xl mx-auto bg-card text-card-foreground rounded-lg shadow-lg overflow-hidden">
           <Image
@@ -66,7 +75,6 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="py-20 bg-gray-300">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
@@ -86,10 +94,11 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
       <section className="py-20">
         <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Cómo funciona
+          </h2>
           <div className="grid md:grid-cols-4 gap-8">
             {steps.map((step, index) => (
               <div
@@ -107,7 +116,6 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-100 py-12">
         <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">

@@ -49,7 +49,7 @@ export const Signin = () => {
           <Button block type="primary" htmlType="submit">
             Log in
           </Button>
-          or <Link to="/my-account">Register now!</Link>
+          o <Link to="/my-account">¡Regístrate ahora!</Link>
         </Form.Item>
       </Form>
     </Card>

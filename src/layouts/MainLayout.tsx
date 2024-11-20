@@ -5,7 +5,8 @@ import {
   Divider,
   Dropdown,
   Avatar,
-  MenuProps
+  MenuProps,
+  Image
 } from 'antd';
 import { Header, Content } from 'antd/es/layout/layout';
 import { useContext, useEffect, useState } from 'react';
@@ -67,10 +68,18 @@ const MainLayout = () => {
       <Layout>
         <Header className="bg-black">
           <div className="flex justify-between items-center min-h-full text-white">
-            {/* Logo */}
-            <Link className="text-xl" to="/">
-              Quick Minimalist Portfoly
-            </Link>
+            <div className="flex items-center">
+              <Image
+                preview={false}
+                src="/Logp.svg"
+                alt="Logo quickMP"
+                width={40}
+                height={40}
+              />
+              <Link className="text-xl" to="/">
+                Quick Minimalist Portfoly
+              </Link>
+            </div>
             {/* Hamburger Icon for Mobile */}
             <Button
               type="text"
@@ -93,8 +102,8 @@ const MainLayout = () => {
                 </Dropdown>
               ) : (
                 <>
-                  <Link to="/signin">Sign In</Link>
-                  <Link to="/my-account">Sign Up</Link>
+                  <Link to="/signin">Iniciar Sesión</Link>
+                  <Link to="/my-account">Registrarme</Link>
                 </>
               )}
             </div>
